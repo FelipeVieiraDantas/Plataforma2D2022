@@ -435,6 +435,12 @@ MonoBehaviour:
   - {fileID: 1518572022}
   - {fileID: 487712873}
   distanciaAceitavel: 0.5
+  distanciaVisao: 6.4
+  distanciaDoPlayer: 1
+  layerDoPlayer:
+    serializedVersion: 2
+    m_Bits: 16
+  tempoParaPerderOPlayer: 3
 --- !u!50 &846702197
 Rigidbody2D:
   serializedVersion: 4
@@ -536,7 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980876704}
   - component: {fileID: 980876705}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: arabiannights-tileb_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389363819}
   - component: {fileID: 1389363820}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: arabiannights-tileb_5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +958,7 @@ GameObject:
   - component: {fileID: 1571395305}
   - component: {fileID: 1571395304}
   - component: {fileID: 1571395308}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: PersonagemPrincipal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1099,7 +1105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1646315234}
   - component: {fileID: 1646315235}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: arabiannights-tileb_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
