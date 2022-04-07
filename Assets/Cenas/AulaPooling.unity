@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &226300211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226300213}
+  - component: {fileID: 226300212}
+  m_Layer: 0
+  m_Name: Pooling Do Tiro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &226300212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226300211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a34b8c506cc5b45b94ab66883c4078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objetoPrefab: {fileID: 3645645603330846888, guid: d5eb973d722b1cb4e9305a33b9a73cd5, type: 3}
+  quantidadeInicial: 20
+  listaDeObjetos: []
+  vaiAdicionar: 1
+--- !u!4 &226300213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226300211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15519363, y: 26.938885, z: -0.28492337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &298214498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5008,12 +5056,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: da0e4894890fa664eb643dc087e1e24a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 459f072433af9fa4c9974cc8559a4b5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.12, y: 0.75}
+  m_Size: {x: 0.99, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5046,7 +5094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bc95d062525ba4cb1b924121d43b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiroPrefab: {fileID: 3645645603330846888, guid: d5eb973d722b1cb4e9305a33b9a73cd5, type: 3}
+  poolingDoTiro: {fileID: 226300212}
   cadenciaDeTiro: 0.2
 --- !u!1 &1285386079
 GameObject:
