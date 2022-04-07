@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NaveAtira : MonoBehaviour
 {
-    public GameObject tiroPrefab;
+    public Pooling poolingDoTiro;
+
     public float cadenciaDeTiro = 0.2f;
 
     // Update is called once per frame
@@ -22,7 +23,16 @@ public class NaveAtira : MonoBehaviour
 
     void Atira()
     {
-        Instantiate(tiroPrefab, transform.position, transform.rotation);
+        //Não quero mains instanciar, quero pegar da lista do pooling
+        //Instantiate(tiroPrefab, transform.position, transform.rotation);
+
+        GameObject tiroDisponivel = poolingDoTiro.EncontraObjetoPraMim();
+        if (tiroDisponivel != null)
+        {
+            tiroDisponivel.transform.position = transform.position;
+            tiroDisponivel.SetActive(true);
+        }
+
         Invoke("Atira", cadenciaDeTiro);
     }
 }

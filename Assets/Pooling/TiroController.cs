@@ -10,7 +10,15 @@ public class TiroController : MonoBehaviour
     void Start()
     {
         fisica = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
         Invoke("MeDestroi", 5);
+    }
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
 
     void Update()
@@ -20,6 +28,8 @@ public class TiroController : MonoBehaviour
 
     void MeDestroi()
     {
-        Destroy(gameObject);
+        //Não vamos mais destruir objetos! Vamos apenas desativa-lo
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
