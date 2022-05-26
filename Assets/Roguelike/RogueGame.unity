@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7798165, y: 1}
+    m_SensorSize: {x: 1.7786561, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -346,6 +346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 10
+  tempoDeKnockback: 0.2
+  forcaKnockback: -600
 --- !u!50 &621300381
 Rigidbody2D:
   serializedVersion: 4
@@ -1723,9 +1725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e98413aed364c245b20b917be366370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSala: {fileID: 7591589923535708408, guid: e6ba6fb215ef5aa44bb905b8d6621685, type: 3}
+  prefabSala:
+  - {fileID: 7591589923535708408, guid: e6ba6fb215ef5aa44bb905b8d6621685, type: 3}
+  - {fileID: 2918491036398387666, guid: 06b1d8d8b5bcb5443a133a56224cd083, type: 3}
   quantidadeDeSalas: 5
   distanciaSalas: 11.27
+  prefabInimigo: {fileID: 7186323777722968296, guid: 543334177c2a132488f9014985c3d08d, type: 3}
 --- !u!4 &1608145855
 Transform:
   m_ObjectHideFlags: 0
@@ -1794,7 +1799,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c966a426a742b8a41b33b35614abadfe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
