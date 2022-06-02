@@ -71,7 +71,17 @@ public class RogueController : MonoBehaviour
 
     public void Atacar()
     {
-        //Na aula que vem, fazemos o ataque funcionar
+        //A função Atacar está sendo chamada da Animação
+        foreach(Collider2D inimigo in
+            Physics2D.OverlapCircleAll(transform.position, 0.25f))
+        {
+            if (inimigo.GetComponent<RogueInimigo>())
+            {
+                //Se entrou no if, é um inimigo
+                inimigo.GetComponent<RogueInimigo>().TomarDano(transform);
+            }
+        }
+
     }
 
 }

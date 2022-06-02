@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public int quantidadeDeSalas;
     public float distanciaSalas = 11.27f;
 
-    public GameObject prefabInimigo;
+    public GameObject[] prefabInimigo;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +30,21 @@ public class GameController : MonoBehaviour
             //Se achou um filho chamado "PosicaoInimigos" ...
             if (novaSala.transform.Find("PosicaoInimigos"))
             {
+                //float chanceDeNaoTer = 0;
                 foreach(Transform filho in
                     novaSala.transform.Find("PosicaoInimigos"))
                 {
-                    Instantiate(prefabInimigo, filho.position, filho.rotation);
+                    yield return new WaitForEndOfFrame();
+
+                    /*if(Random.value < chanceDeNaoTer)
+                    {
+                        continue;
+                    }*/
+
+                    int inimigoAleatorio = Random.Range(0, prefabInimigo.Length);
+                    Instantiate(prefabInimigo[inimigoAleatorio], 
+                        filho.position, filho.rotation);
+                    //chanceDeNaoTer += 0.2f;
                 }
             }
         }
