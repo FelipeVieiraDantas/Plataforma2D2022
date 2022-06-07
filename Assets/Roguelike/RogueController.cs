@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class RogueController : MonoBehaviour
 {
+    [Header("Coisas de Coletável")]
+    public int quantidadeColetavel;
+    public TMPro.TextMeshProUGUI textoDeColetavel;
+
     Animator anim;
 
     [Header("Coisas de HP")]
@@ -21,14 +25,22 @@ public class RogueController : MonoBehaviour
     public float tempoDeKnockback = 0.5f;
     public float forcaKnockback = 100;
 
+    [Header("Dash")]
+    public float tempoDeDash = 0.2f;
+    public float forcaDash = 700;
+    bool fazendoDash;
+
     void Start()
     {
         fisica = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        quantidadeColetavel = PlayerPrefs.GetInt("Moedas");
+        textoDeColetavel.text = quantidadeColetavel.ToString();
     }
     void Update()
     {
-        if (knockback)
+        if (knockback || fazendoDash)
         {
             return;
         }
@@ -41,6 +53,25 @@ public class RogueController : MonoBehaviour
         float movimentoH = Input.GetAxis("Horizontal");
         float movimentoV = Input.GetAxis("Vertical");
         fisica.velocity = new Vector2(movimentoH, movimentoV) * velocidade;
+
+        //Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            fisica.velocity = Vector2.zero;
+            //Se o jogador não está apertando nada, vai pra direita
+            if(movimentoH == 0 && movimentoV == 0)
+            {
+                movimentoH = 1;
+            }
+            fisica.AddForce(new Vector2(movimentoH, movimentoV) * forcaDash);
+            fazendoDash = true;
+            Invoke("VoltaDash", tempoDeDash);
+        }
+    }
+
+    void VoltaDash()
+    {
+        fazendoDash = false;
     }
 
     public void TomarDano(Transform inimigo)
@@ -82,6 +113,20 @@ public class RogueController : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Moeda")
+        {
+            quantidadeColetavel++;
+            textoDeColetavel.text = quantidadeColetavel.ToString();
+            Destroy(collision.gameObject);
+
+            //Salvar:
+            PlayerPrefs.SetInt("Moedas", quantidadeColetavel);
+            PlayerPrefs.Save();
+        }
     }
 
 }

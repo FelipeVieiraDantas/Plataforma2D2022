@@ -10,6 +10,10 @@ public class GameController : MonoBehaviour
 
     public GameObject[] prefabInimigo;
 
+    public GameObject prefabMoeda;
+    public int minimoMoedaPorSala = 0;
+    public int maximoMoedaPorSala = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +50,20 @@ public class GameController : MonoBehaviour
                         filho.position, filho.rotation);
                     //chanceDeNaoTer += 0.2f;
                 }
+            }
+
+            //Gerar Coletáveis
+            int moedasNessaSala = Random.Range(minimoMoedaPorSala, 
+                maximoMoedaPorSala);
+            for(int moedaAtual = 0; moedaAtual < moedasNessaSala; moedaAtual++)
+            {
+                Transform posMin = novaSala.transform.Find("PosiçãoMínima");
+                Transform posMax = novaSala.transform.Find("PosiçãoMáxima");
+                Vector3 posMoeda = new Vector3(
+                    Random.Range(posMin.position.x, posMax.position.x),
+                    Random.Range(posMin.position.y, posMax.position.y),
+                    0);
+                Instantiate(prefabMoeda, posMoeda, Quaternion.identity);
             }
         }
     }
