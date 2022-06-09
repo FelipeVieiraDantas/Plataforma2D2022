@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject[] prefabSala;
+    public List<GameObject> prefabSala;
     public int quantidadeDeSalas;
     public float distanciaSalas = 11.27f;
 
@@ -26,10 +26,16 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < quantidadeDeSalas; i++)
         {
             yield return new WaitForEndOfFrame();
-            int aleatorio = Random.Range(0, prefabSala.Length);
+            int aleatorio = Random.Range(0, prefabSala.Count);
             GameObject novaSala = Instantiate(prefabSala[aleatorio]);
             novaSala.transform.position = new Vector3(0, proximoY, 0);
             proximoY += distanciaSalas;
+
+            //Se for loja, nunca mais pode aparecer loja
+            if(aleatorio == 2)
+            {
+                prefabSala.RemoveAt(2);
+            }
 
             //Se achou um filho chamado "PosicaoInimigos" ...
             if (novaSala.transform.Find("PosicaoInimigos"))

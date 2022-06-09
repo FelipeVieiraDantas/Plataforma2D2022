@@ -272,7 +272,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7795918, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -743,6 +743,7 @@ MonoBehaviour:
   velocidade: 10
   tempoDeKnockback: 0.2
   forcaKnockback: -600
+  comprouDash: 0
   tempoDeDash: 0.2
   forcaDash: 1500
 --- !u!50 &621300381
@@ -2442,6 +2443,7 @@ MonoBehaviour:
   prefabSala:
   - {fileID: 7591589923535708408, guid: e6ba6fb215ef5aa44bb905b8d6621685, type: 3}
   - {fileID: 2918491036398387666, guid: 06b1d8d8b5bcb5443a133a56224cd083, type: 3}
+  - {fileID: 8606732638361916650, guid: 62e1e895f7fd62444ac55a2b0cf70ff1, type: 3}
   quantidadeDeSalas: 5
   distanciaSalas: 11.27
   prefabInimigo:

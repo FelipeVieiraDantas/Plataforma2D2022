@@ -26,6 +26,7 @@ public class RogueController : MonoBehaviour
     public float forcaKnockback = 100;
 
     [Header("Dash")]
+    public bool comprouDash;
     public float tempoDeDash = 0.2f;
     public float forcaDash = 700;
     bool fazendoDash;
@@ -55,7 +56,7 @@ public class RogueController : MonoBehaviour
         fisica.velocity = new Vector2(movimentoH, movimentoV) * velocidade;
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (comprouDash && Input.GetKeyDown(KeyCode.LeftShift))
         {
             fisica.velocity = Vector2.zero;
             //Se o jogador não está apertando nada, vai pra direita
@@ -106,6 +107,10 @@ public class RogueController : MonoBehaviour
         foreach(Collider2D inimigo in
             Physics2D.OverlapCircleAll(transform.position, 0.25f))
         {
+            //Se quiser não pegar a visão do inimigo
+            /*if (inimigo.isTrigger)
+                continue;*/
+
             if (inimigo.GetComponent<RogueInimigo>())
             {
                 //Se entrou no if, é um inimigo
@@ -123,10 +128,14 @@ public class RogueController : MonoBehaviour
             textoDeColetavel.text = quantidadeColetavel.ToString();
             Destroy(collision.gameObject);
 
-            //Salvar:
-            PlayerPrefs.SetInt("Moedas", quantidadeColetavel);
-            PlayerPrefs.Save();
+            Salvar();
         }
     }
 
+    public void Salvar()
+    {
+        //Salvar:
+        PlayerPrefs.SetInt("Moedas", quantidadeColetavel);
+        PlayerPrefs.Save();
+    }
 }
