@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class RogueInimigo : MonoBehaviour
 {
+    public Porta porta;
+
     [Header("Sobre HP:")]
     public Image barraDeHp;
     public int hpAtual;
@@ -62,6 +64,7 @@ public class RogueInimigo : MonoBehaviour
 
         if(hpAtual <= 0)
         {
+            porta.InimigoMorreu(gameObject);
             Destroy(gameObject);
         }
 

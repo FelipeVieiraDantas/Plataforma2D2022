@@ -40,6 +40,10 @@ public class GameController : MonoBehaviour
             //Se achou um filho chamado "PosicaoInimigos" ...
             if (novaSala.transform.Find("PosicaoInimigos"))
             {
+                Porta porta =
+                    novaSala.GetComponentInChildren<Porta>();
+                porta.listaDeInimigos = new List<GameObject>();
+
                 //float chanceDeNaoTer = 0;
                 foreach(Transform filho in
                     novaSala.transform.Find("PosicaoInimigos"))
@@ -52,9 +56,14 @@ public class GameController : MonoBehaviour
                     }*/
 
                     int inimigoAleatorio = Random.Range(0, prefabInimigo.Length);
-                    Instantiate(prefabInimigo[inimigoAleatorio], 
+                    GameObject novoInimigo = Instantiate(prefabInimigo[inimigoAleatorio], 
                         filho.position, filho.rotation);
                     //chanceDeNaoTer += 0.2f;
+
+                    //Colocar esse inimigo na porta
+                    porta.listaDeInimigos.Add(novoInimigo);
+                    novoInimigo.GetComponent<RogueInimigo>()
+                        .porta = porta;
                 }
             }
 
